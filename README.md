@@ -1,6 +1,17 @@
-# AngularProject
+# Personificca - An angular application
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+
+---
+
+## Requirements
+
+- material design
+- 3 links/âncoras
+- componentes
+- CRUD
+- rotas
+- visualmente agradável
 
 ## Development server
 
