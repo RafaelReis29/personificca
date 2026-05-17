@@ -1,0 +1,74 @@
+<main class="app-shell">
+  <app-header></app-header>
+
+  <section class="details-page">
+    <div class="details-grid">
+      <div class="character-art" [ngClass]="persona.imageClass" [style.--accent]="persona.accent">
+        <span>{{ persona.name.slice(0, 1) }}</span>
+      </div>
+
+      <div class="details-copy">
+        <p class="category">{{ persona.category }}</p>
+        <h1>{{ persona.name }}</h1>
+        <p class="subtitle">{{ persona.role }}</p>
+
+        <div class="meta-grid">
+          <div>
+            <small>Creator</small>
+            <strong>{{ persona.creator }}</strong>
+          </div>
+          <div>
+            <small>Version</small>
+            <strong>v4.2.0-alpha</strong>
+          </div>
+        </div>
+
+        <section class="panel">
+          <h2>Technical Attributes</h2>
+          <div class="stat-row">
+            <span>Strength</span>
+            <b>{{ persona.stats.strength }}/100</b>
+            <i [style.width.%]="persona.stats.strength"></i>
+          </div>
+          <div class="stat-row">
+            <span>Intellect</span>
+            <b>{{ persona.stats.intellect }}/100</b>
+            <i [style.width.%]="persona.stats.intellect"></i>
+          </div>
+          <div class="stat-row">
+            <span>Essence</span>
+            <b>{{ persona.stats.essence }}/100</b>
+            <i [style.width.%]="persona.stats.essence"></i>
+          </div>
+          <div class="stat-row">
+            <span>Stability</span>
+            <b>{{ persona.stats.stability }}/100</b>
+            <i [style.width.%]="persona.stats.stability"></i>
+          </div>
+        </section>
+
+        <section class="lore">
+          <h2>Lore & Origin</h2>
+          <p>
+            {{ persona.description }} Legends say this construct learned its deepest values from impossible terrain,
+            half memory and half command. It arrives with clean intent, sharp constraints, and a signature that refuses to fade.
+          </p>
+        </section>
+
+        <a class="summon" routerLink="/create">Summon Character</a>
+      </div>
+    </div>
+
+    <section class="related">
+      <div class="related-title">
+        <h2>More by {{ persona.creator }}</h2>
+        <a routerLink="/catalog">View Gallery</a>
+      </div>
+      <div class="related-grid">
+        <app-card *ngFor="let item of related" [persona]="item" [compact]="true"></app-card>
+      </div>
+    </section>
+  </section>
+
+  <app-footer></app-footer>
+</main>

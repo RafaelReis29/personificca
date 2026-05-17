@@ -1,0 +1,18 @@
+<article class="persona-card" [class.compact]="compact">
+  <div class="portrait" [ngClass]="persona.imageClass" [style.--accent]="persona.accent">
+    <span>{{ persona.name.slice(0, 1) }}</span>
+  </div>
+
+  <div class="card-body">
+    <div>
+      <p class="category">{{ persona.category }}</p>
+      <h3>{{ persona.name }}</h3>
+      <p>{{ persona.role }}</p>
+    </div>
+
+    <div class="card-footer">
+      <a [routerLink]="['/character', persona.id]">Details</a>
+      <button type="button" aria-label="Favorite persona">♡</button>
+    </div>
+  </div>
+</article>

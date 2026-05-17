@@ -1,0 +1,17 @@
+<header class="site-header">
+  <a class="brand" routerLink="/" aria-label="Personificca home">
+    <span class="brand-mark">P</span>
+    <span>Personificca</span>
+  </a>
+
+  <nav class="nav-links" aria-label="Main navigation">
+    <a *ngFor="let item of navItems" [routerLink]="item.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: item.path === '/' }">
+      {{ item.label }}
+    </a>
+  </nav>
+
+  <div class="header-actions">
+    <a class="ghost-link" routerLink="/catalog">Login</a>
+    <a class="primary-link" routerLink="/create">Get Started</a>
+  </div>
+</header>

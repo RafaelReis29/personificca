@@ -1,0 +1,88 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 64px;
+  padding: 0 7vw;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(8, 7, 13, 0.84);
+  backdrop-filter: blur(18px);
+}
+
+.brand,
+.nav-links,
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  gap: 10px;
+  color: var(--text-strong);
+  font-size: 18px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  color: #ffffff;
+  box-shadow: 0 0 24px rgba(197, 72, 255, 0.5);
+}
+
+.nav-links {
+  gap: 24px;
+}
+
+.nav-links a,
+.ghost-link,
+.primary-link {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-links a.active,
+.nav-links a:hover,
+.ghost-link:hover {
+  color: var(--text-strong);
+}
+
+.header-actions {
+  gap: 12px;
+}
+
+.primary-link {
+  min-width: 104px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  color: #ffffff;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(196, 74, 255, 0.28);
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    padding: 18px 22px;
+  }
+
+  .nav-links,
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

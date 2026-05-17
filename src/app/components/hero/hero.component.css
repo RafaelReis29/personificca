@@ -1,0 +1,137 @@
+.hero {
+  display: grid;
+  align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+  gap: 54px;
+  min-height: calc(100vh - 170px);
+  padding: 82px 7vw 72px;
+}
+
+.hero-copy {
+  max-width: 680px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  margin-bottom: 22px;
+  padding: 8px 12px;
+  border: 1px solid rgba(195, 91, 255, 0.45);
+  border-radius: 999px;
+  color: var(--purple-light);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: clamp(42px, 6vw, 82px);
+  line-height: 0.96;
+}
+
+p {
+  max-width: 560px;
+  margin: 24px 0 0;
+  color: var(--text-muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.hero-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.primary {
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  color: #ffffff;
+}
+
+.secondary {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-strong);
+}
+
+.hero-visual {
+  position: relative;
+  display: grid;
+  min-height: 430px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 50% 25%, rgba(211, 71, 255, 0.64), transparent 28%),
+    radial-gradient(circle at 50% 68%, rgba(255, 61, 184, 0.18), transparent 34%),
+    linear-gradient(180deg, #111018, #07070b);
+  box-shadow: inset 0 0 80px rgba(205, 66, 255, 0.12), 0 36px 90px rgba(0, 0, 0, 0.36);
+}
+
+.core-head {
+  width: 190px;
+  height: 250px;
+  border-radius: 50% 50% 44% 44%;
+  background:
+    radial-gradient(circle at 36% 38%, rgba(255, 255, 255, 0.7) 0 2%, transparent 4%),
+    radial-gradient(circle at 64% 38%, rgba(255, 255, 255, 0.7) 0 2%, transparent 4%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12), transparent 18% 82%, rgba(255, 255, 255, 0.12)),
+    linear-gradient(145deg, #1b1422, #09070c 58%, #35143c);
+  box-shadow: 0 0 80px rgba(217, 66, 255, 0.72);
+}
+
+.signal-card {
+  position: absolute;
+  right: 34px;
+  bottom: 34px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 260px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(20, 17, 27, 0.86);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.34);
+}
+
+.signal-card span {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--pink), var(--purple));
+}
+
+strong,
+small {
+  display: block;
+}
+
+strong {
+  color: var(--text-strong);
+}
+
+small {
+  margin-top: 4px;
+  color: var(--text-soft);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 48px;
+  }
+}

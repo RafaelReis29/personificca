@@ -1,0 +1,21 @@
+<main class="app-shell">
+  <app-header></app-header>
+  <app-hero></app-hero>
+
+  <section class="elite-section">
+    <div class="section-title">
+      <div>
+        <h2>Elite Personas</h2>
+        <p>Connect with the most established consciousness in the galaxy.</p>
+      </div>
+      <a routerLink="/catalog">View Catalog</a>
+    </div>
+
+    <div class="elite-grid">
+      <app-card *ngFor="let persona of featuredPersonas" [persona]="persona" [compact]="true"></app-card>
+    </div>
+  </section>
+
+  <app-feature-grid></app-feature-grid>
+  <app-footer></app-footer>
+</main>

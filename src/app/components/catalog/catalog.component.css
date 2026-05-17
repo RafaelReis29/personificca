@@ -1,0 +1,148 @@
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 28px;
+}
+
+.filters {
+  position: sticky;
+  top: 90px;
+  align-self: start;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.filters p {
+  margin: 0 0 14px;
+  color: var(--text-strong);
+  font-weight: 900;
+}
+
+.filters button {
+  display: block;
+  width: 100%;
+  min-height: 38px;
+  margin-bottom: 8px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+}
+
+.filters button.active,
+.filters button:hover {
+  background: rgba(196, 92, 255, 0.16);
+  color: var(--text-strong);
+}
+
+.filter-card {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.filter-card span {
+  color: var(--text-soft);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.filter-card div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+small {
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+}
+
+.catalog-content {
+  min-width: 0;
+}
+
+.catalog-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 22px;
+  margin-bottom: 26px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  color: var(--text-strong);
+  font-size: clamp(32px, 5vw, 54px);
+}
+
+.catalog-toolbar p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+label {
+  position: relative;
+  min-width: 280px;
+}
+
+label span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--text-strong);
+  padding: 0 14px;
+}
+
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+@media (max-width: 1000px) {
+  .catalog-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    position: static;
+  }
+
+  .persona-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .catalog-toolbar {
+    flex-direction: column;
+  }
+
+  label,
+  .persona-grid {
+    width: 100%;
+  }
+
+  .persona-grid {
+    grid-template-columns: 1fr;
+  }
+}

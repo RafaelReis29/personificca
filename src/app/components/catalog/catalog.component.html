@@ -1,0 +1,39 @@
+<section class="catalog-layout">
+  <aside class="filters" aria-label="Catalog filters">
+    <p>Categories</p>
+    <button
+      *ngFor="let category of categories"
+      type="button"
+      [class.active]="category === selectedCategory"
+      (click)="selectCategory(category)">
+      {{ category }}
+    </button>
+
+    <div class="filter-card">
+      <span>Featured Tags</span>
+      <div>
+        <small>Mentor</small>
+        <small>Magic</small>
+        <small>Battle</small>
+      </div>
+    </div>
+  </aside>
+
+  <div class="catalog-content">
+    <div class="catalog-toolbar">
+      <div>
+        <h1>Character Catalog</h1>
+        <p>Discover unique personas for your next adventure.</p>
+      </div>
+
+      <label>
+        <span>Search</span>
+        <input type="search" [(ngModel)]="searchTerm" placeholder="Search characters..." />
+      </label>
+    </div>
+
+    <div class="persona-grid">
+      <app-card *ngFor="let persona of filteredPersonas" [persona]="persona" [compact]="true"></app-card>
+    </div>
+  </div>
+</section>
