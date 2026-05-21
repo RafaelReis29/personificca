@@ -23,6 +23,7 @@ import { CreateCharacterComponent } from './pages/create-character/create-charac
 import { CharacterDetailsComponent } from './pages/character-details/character-details.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { FeatureGridComponent } from './components/feature-grid/feature-grid.component';
+import { PageShellComponent } from './components/page-shell/page-shell.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { FeatureGridComponent } from './components/feature-grid/feature-grid.com
     CreateCharacterComponent,
     CharacterDetailsComponent,
     HeroComponent,
-    FeatureGridComponent
+    FeatureGridComponent,
+    PageShellComponent
   ],
   imports: [
     BrowserModule,
