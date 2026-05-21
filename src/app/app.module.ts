@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -40,6 +41,7 @@ import { FeatureGridComponent } from './components/feature-grid/feature-grid.com
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
