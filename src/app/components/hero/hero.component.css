@@ -12,7 +12,7 @@
 .eyebrow {
   display: inline-flex;
   margin-bottom: 18px;
-  color: var(--purple-light);
+  color: var(--primary-soft);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0;
