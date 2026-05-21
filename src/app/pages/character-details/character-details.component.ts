@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PERSONAS, Persona } from '../../data/personas';
+import { FALLBACK_PERSONAS } from '../../data/fallback-personas';
+import { Persona } from '../../models/persona';
+import { PersonaService } from '../../services/persona.service';
 
 @Component({
   selector: 'app-character-details',
@@ -8,12 +10,20 @@ import { PERSONAS, Persona } from '../../data/personas';
   styleUrls: ['./character-details.component.css']
 })
 export class CharacterDetailsComponent {
-  persona: Persona = PERSONAS[0];
-  related: Persona[] = [];
+  persona?: Persona;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private route: ActivatedRoute,
+    private personaService: PersonaService
+  ) {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.persona = PERSONAS.find((item) => item.id === id) ?? PERSONAS[5];
-    this.related = PERSONAS.filter((item) => item.id !== this.persona.id && item.creator === this.persona.creator).concat(PERSONAS.filter((item) => item.id !== this.persona.id)).slice(0, 4);
+    this.personaService.getPersona(id).subscribe({
+      next: (persona) => {
+        this.persona = persona;
+      },
+      error: () => {
+        this.persona = FALLBACK_PERSONAS.find((item) => item.id === id) ?? FALLBACK_PERSONAS[0];
+      }
+    });
   }
 }
