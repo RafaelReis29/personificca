@@ -1,6 +1,5 @@
-<header class="site-header">
+<mat-toolbar class="site-header">
   <a class="brand" routerLink="/" aria-label="Personificca home">
-    <span class="brand-mark">P</span>
     <span>Personificca</span>
   </a>
 
@@ -11,7 +10,7 @@
   </nav>
 
   <div class="header-actions">
-    <a class="ghost-link" routerLink="/catalog">Login</a>
-    <a class="primary-link" routerLink="/create">Get Started</a>
+    <a mat-stroked-button routerLink="/catalog">Browse</a>
+    <a mat-flat-button color="primary" routerLink="/personas/new">New Persona</a>
   </div>
-</header>
+</mat-toolbar>
