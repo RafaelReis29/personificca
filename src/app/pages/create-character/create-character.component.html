@@ -1,85 +1,61 @@
 <main class="app-shell">
   <app-header></app-header>
 
-  <section class="create-page">
-    <div class="page-heading">
-      <h1>Unleash Your Alter Ego</h1>
-      <p>Define the essence of your digital presence through advanced persona synthesis.</p>
-    </div>
+  <app-page-shell
+    [title]="pageTitle">
+    <form class="creator-form" #personaForm="ngForm" (ngSubmit)="savePersona()">
+      <mat-card class="panel">
+        <h2>Identity</h2>
 
-    <div class="creator-grid">
-      <form class="creator-form">
-        <section class="panel">
-          <h2>Identity</h2>
-          <label>
-            Handle / Name
-            <input type="text" [(ngModel)]="identity.name" name="name" placeholder="e.g. Neon Specter" />
-          </label>
-          <label>
-            Origin Class
-            <select [(ngModel)]="identity.origin" name="origin">
-              <option>Cybernetic Wanderer</option>
-              <option>Obsidian Guardian</option>
-              <option>Dream Cartographer</option>
-              <option>Quantum Oracle</option>
-            </select>
-          </label>
-        </section>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" required name="name" [(ngModel)]="persona.name" />
+        </mat-form-field>
 
-        <section class="panel">
-          <h2>Biography & Lore</h2>
-          <label>
-            Origin Story
-            <textarea [(ngModel)]="identity.story" name="story" placeholder="How did this persona manifest in the digital realm?"></textarea>
-          </label>
-          <div class="tip">
-            <strong>Pro tip</strong>
-            Adding specific sensory details, goals, and flaws increases persona resonance.
-          </div>
-        </section>
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select required name="category" [(ngModel)]="persona.category_id">
+            <mat-option *ngFor="let category of categories" [value]="category.id">
+              {{ category.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-        <section class="panel">
-          <h2>Attributes</h2>
-          <label class="range-row">
-            <span>Visibility</span>
-            <input type="range" min="0" max="100" [(ngModel)]="identity.visibility" name="visibility" />
-            <b>{{ identity.visibility }}%</b>
-          </label>
-          <label class="range-row">
-            <span>Logic Core</span>
-            <input type="range" min="0" max="100" [(ngModel)]="identity.logic" name="logic" />
-            <b>{{ identity.logic }}%</b>
-          </label>
-          <label class="range-row">
-            <span>Charisma Sync</span>
-            <input type="range" min="0" max="100" [(ngModel)]="identity.charisma" name="charisma" />
-            <b>{{ identity.charisma }}%</b>
-          </label>
-          <label class="range-row">
-            <span>Stealth Protocol</span>
-            <input type="range" min="0" max="100" [(ngModel)]="identity.stealth" name="stealth" />
-            <b>{{ identity.stealth }}%</b>
-          </label>
-        </section>
-      </form>
+        <mat-form-field appearance="outline">
+          <mat-label>Share</mat-label>
+          <mat-select required name="share" [(ngModel)]="persona.share">
+            <mat-option *ngFor="let option of shareOptions" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card>
 
-      <aside class="preview-column">
-        <div class="preview-card">
-          <div class="preview-portrait"></div>
-          <small>Visual Matrix Placeholder</small>
-          <h3>{{ identity.name || 'Unnamed Persona' }}</h3>
-          <p>{{ identity.origin }}</p>
-          <a routerLink="/catalog">Initiate Character</a>
-          <span>Finishing costs 500 Credits</span>
-        </div>
+      <mat-card class="panel">
+        <h2>Story</h2>
 
-        <div class="mode-card">
-          <strong>Collaborative Mode</strong>
-          <p>Invite an author to balance backstory, powers, and limits.</p>
-        </div>
-      </aside>
-    </div>
-  </section>
+        <mat-form-field appearance="outline">
+          <mat-label>Persona story</mat-label>
+          <textarea matInput required rows="7" name="story" [(ngModel)]="persona.story"></textarea>
+        </mat-form-field>
+      </mat-card>
+
+      <mat-card class="panel">
+        <h2>Attributes</h2>
+
+        <label class="range-row" *ngFor="let attribute of attributes">
+          <span>{{ attribute.name }}</span>
+          <input type="range" min="0" max="100" [name]="attribute.name" [(ngModel)]="attribute.level" />
+          <b>{{ attribute.level }}</b>
+        </label>
+      </mat-card>
+
+      <div class="form-actions">
+        <button mat-flat-button color="primary" type="submit" [disabled]="personaForm.invalid">Save Persona</button>
+        <a mat-stroked-button routerLink="/catalog">Cancel</a>
+      </div>
+    </form>
+  </app-page-shell>
 
   <app-footer></app-footer>
 </main>
