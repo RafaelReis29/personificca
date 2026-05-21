@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class FeatureGridComponent {
   features = [
-    { title: 'Cognitive Mapping', text: 'Define the foundational logic and memory structures of your character.' },
-    { title: 'Linguistic DNA', text: 'Craft voice, cadence, humor, principles, dialects, and emotional resonance.' },
-    { title: 'Universal Bridge', text: 'Deploy your persona across apps, automations, APIs, and creative workflows.' }
+    { title: 'Clear profile', text: 'Give each persona a name, story, category, and sharing option.' },
+    { title: 'Simple attributes', text: 'Use familiar RPG traits such as strength, wisdom, and charisma.' },
+    { title: 'Small catalog', text: 'Browse, edit, and remove personas without extra account steps.' }
   ];
 }

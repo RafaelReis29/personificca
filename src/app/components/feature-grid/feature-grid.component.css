@@ -39,7 +39,6 @@ span {
   height: 38px;
   border-radius: 8px;
   background: linear-gradient(135deg, var(--purple), var(--pink));
-  box-shadow: 0 0 22px rgba(210, 77, 255, 0.45);
 }
 
 h3 {

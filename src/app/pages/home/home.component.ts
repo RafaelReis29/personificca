@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { PERSONAS, Persona } from '../../data/personas';
+import { FALLBACK_PERSONAS } from '../../data/fallback-personas';
+import { Persona } from '../../models/persona';
 
 @Component({
   selector: 'app-home',
@@ -7,5 +8,5 @@ import { PERSONAS, Persona } from '../../data/personas';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  featuredPersonas: Persona[] = PERSONAS.slice(0, 4);
+  featuredPersonas: Persona[] = FALLBACK_PERSONAS.slice(0, 3);
 }
