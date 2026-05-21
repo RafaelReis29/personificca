@@ -8,8 +8,9 @@ import { HomeComponent } from './pages/home/home.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'catalog', component: CatalogPageComponent },
-  { path: 'create', component: CreateCharacterComponent },
-  { path: 'character/:id', component: CharacterDetailsComponent },
+  { path: 'personas/new', component: CreateCharacterComponent },
+  { path: 'personas/:id', component: CharacterDetailsComponent },
+  { path: 'personas/:id/edit', component: CreateCharacterComponent },
   { path: '**', redirectTo: '' }
 ];
 
