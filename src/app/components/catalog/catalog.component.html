@@ -2,19 +2,25 @@
   <aside class="filters" aria-label="Catalog filters">
     <p>Categories</p>
     <button
+      type="button"
+      [class.active]="selectedCategory === 0"
+      (click)="selectCategory(0)">
+      All
+    </button>
+    <button
       *ngFor="let category of categories"
       type="button"
-      [class.active]="category === selectedCategory"
-      (click)="selectCategory(category)">
-      {{ category }}
+      [class.active]="category.id === selectedCategory"
+      (click)="selectCategory(category.id)">
+      {{ category.name }}
     </button>
 
     <div class="filter-card">
-      <span>Featured Tags</span>
+      <span>Share options</span>
       <div>
-        <small>Mentor</small>
-        <small>Magic</small>
-        <small>Battle</small>
+        <small>Private</small>
+        <small>Link</small>
+        <small>Public</small>
       </div>
     </div>
   </aside>
@@ -22,18 +28,26 @@
   <div class="catalog-content">
     <div class="catalog-toolbar">
       <div>
-        <h1>Character Catalog</h1>
-        <p>Discover unique personas for your next adventure.</p>
+        <h1>Persona Catalog</h1>
+        <p>Browse the personas saved in the local API.</p>
       </div>
 
       <label>
         <span>Search</span>
-        <input type="search" [(ngModel)]="searchTerm" placeholder="Search characters..." />
+        <input type="search" [(ngModel)]="searchTerm" placeholder="Search personas..." />
       </label>
     </div>
 
-    <div class="persona-grid">
-      <app-card *ngFor="let persona of filteredPersonas" [persona]="persona" [compact]="true"></app-card>
+    <p class="empty-state" *ngIf="loading">Loading personas...</p>
+    <p class="empty-state" *ngIf="!loading && !filteredPersonas.length">No personas found.</p>
+
+    <div class="persona-grid" *ngIf="!loading && filteredPersonas.length">
+      <app-card
+        *ngFor="let persona of filteredPersonas"
+        [persona]="persona"
+        [compact]="true"
+        (delete)="deletePersona($event)">
+      </app-card>
     </div>
   </div>
 </section>

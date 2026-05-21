@@ -1,55 +1,52 @@
 .catalog-layout {
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr);
-  gap: 28px;
+  gap: 26px;
 }
 
 .filters {
-  position: sticky;
-  top: 90px;
   align-self: start;
   padding: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--surface-2);
 }
 
 .filters p {
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   color: var(--text-strong);
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .filters button {
   display: block;
   width: 100%;
-  min-height: 38px;
   margin-bottom: 8px;
+  padding: 10px 12px;
   border: 0;
-  border-radius: 8px;
-  background: transparent;
-  color: var(--text-muted);
-  font-weight: 800;
-  text-align: left;
+  border-radius: 6px;
+  background: var(--surface);
+  color: #ffffff;
   cursor: pointer;
+  text-align: left;
 }
 
 .filters button.active,
 .filters button:hover {
-  background: rgba(196, 92, 255, 0.16);
+  background: var(--primary-muted);
   color: var(--text-strong);
 }
 
 .filter-card {
   margin-top: 20px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
 }
 
 .filter-card span {
   color: var(--text-soft);
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
@@ -57,92 +54,75 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
-small {
+.filter-card small {
   padding: 6px 8px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-muted);
-}
-
-.catalog-content {
-  min-width: 0;
+  border-radius: 6px;
+  background: var(--surface-3);
+  color: #ffffff;
 }
 
 .catalog-toolbar {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 22px;
-  margin-bottom: 26px;
+  gap: 18px;
+  margin-bottom: 24px;
 }
 
 h1 {
-  margin: 0 0 8px;
+  margin: 0;
   color: var(--text-strong);
-  font-size: clamp(32px, 5vw, 54px);
+  font-size: 34px;
 }
 
 .catalog-toolbar p {
-  margin: 0;
-  color: var(--text-muted);
+  margin: 8px 0 0;
 }
 
-label {
-  position: relative;
-  min-width: 280px;
-}
-
-label span {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+.catalog-toolbar label {
+  display: grid;
+  min-width: 250px;
+  gap: 6px;
+  color: var(--text-soft);
+  font-size: 13px;
 }
 
 input {
-  width: 100%;
   min-height: 44px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-strong);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.045);
+  background: var(--surface);
   color: var(--text-strong);
   padding: 0 14px;
 }
 
 .persona-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 18px;
 }
 
-@media (max-width: 1000px) {
+.empty-state {
+  padding: 32px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 8px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+@media (max-width: 840px) {
   .catalog-layout {
     grid-template-columns: 1fr;
   }
 
-  .filters {
-    position: static;
-  }
-
-  .persona-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 680px) {
   .catalog-toolbar {
     flex-direction: column;
   }
 
-  label,
-  .persona-grid {
+  .catalog-toolbar label {
     width: 100%;
-  }
-
-  .persona-grid {
-    grid-template-columns: 1fr;
   }
 }

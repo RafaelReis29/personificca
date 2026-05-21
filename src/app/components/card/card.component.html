@@ -1,18 +1,19 @@
-<article class="persona-card" [class.compact]="compact">
-  <div class="portrait" [ngClass]="persona.imageClass" [style.--accent]="persona.accent">
-    <span>{{ persona.name.slice(0, 1) }}</span>
-  </div>
-
+<mat-card class="persona-card" [class.compact]="compact">
   <div class="card-body">
     <div>
       <p class="category">{{ persona.category }}</p>
       <h3>{{ persona.name }}</h3>
-      <p>{{ persona.role }}</p>
+      <p>{{ persona.story }}</p>
     </div>
 
     <div class="card-footer">
-      <a [routerLink]="['/character', persona.id]">Details</a>
-      <button type="button" aria-label="Favorite persona">♡</button>
+      <a mat-button [routerLink]="['/personas', persona.id]">Details</a>
+      <a mat-icon-button [routerLink]="['/personas', persona.id, 'edit']" aria-label="Edit persona">
+        <mat-icon svgIcon="edit"></mat-icon>
+      </a>
+      <button mat-icon-button type="button" aria-label="Delete persona" (click)="delete.emit(persona.id)">
+        <mat-icon svgIcon="delete"></mat-icon>
+      </button>
     </div>
   </div>
-</article>
+</mat-card>
