@@ -1,0 +1,61 @@
+<main class="app-shell">
+  <app-header></app-header>
+
+  <app-page-shell
+    [title]="pageTitle">
+    <form class="creator-form" #personaForm="ngForm" (ngSubmit)="savePersona()">
+      <mat-card class="panel">
+        <h2>Identity</h2>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" required name="name" [(ngModel)]="persona.name" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select required name="category" [(ngModel)]="persona.category_id">
+            <mat-option *ngFor="let category of categories" [value]="category.id">
+              {{ category.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Share</mat-label>
+          <mat-select required name="share" [(ngModel)]="persona.share">
+            <mat-option *ngFor="let option of shareOptions" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card>
+
+      <mat-card class="panel">
+        <h2>Story</h2>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Persona story</mat-label>
+          <textarea matInput required rows="7" name="story" [(ngModel)]="persona.story"></textarea>
+        </mat-form-field>
+      </mat-card>
+
+      <mat-card class="panel">
+        <h2>Attributes</h2>
+
+        <label class="range-row" *ngFor="let attribute of attributes">
+          <span>{{ attribute.name }}</span>
+          <input type="range" min="0" max="100" [name]="attribute.name" [(ngModel)]="attribute.level" />
+          <b>{{ attribute.level }}</b>
+        </label>
+      </mat-card>
+
+      <div class="form-actions">
+        <button mat-flat-button color="primary" type="submit" [disabled]="personaForm.invalid">Save Persona</button>
+        <a mat-stroked-button routerLink="/catalog">Cancel</a>
+      </div>
+    </form>
+  </app-page-shell>
+
+  <app-footer></app-footer>
+</main>

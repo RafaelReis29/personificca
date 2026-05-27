@@ -1,1 +1,23 @@
-<p>header works!</p>
+<mat-toolbar class="site-header">
+  <a class="brand" routerLink="/" aria-label="Personificca home">
+    <span>Personificca</span>
+  </a>
+
+  <nav class="nav-links" aria-label="Main navigation">
+    <a
+      *ngFor="let item of navItems"
+      [routerLink]="item.path"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+    >
+      {{ item.label }}
+    </a>
+  </nav>
+
+  <div class="header-actions">
+    <a mat-stroked-button routerLink="/catalog">Browse</a>
+    <a mat-flat-button color="primary" routerLink="/personas/new"
+      >New Persona</a
+    >
+  </div>
+</mat-toolbar>

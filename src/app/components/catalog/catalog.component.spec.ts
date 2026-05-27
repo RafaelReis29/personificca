@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { CatalogComponent } from './catalog.component';
 
 describe('CatalogComponent', () => {
@@ -8,7 +10,9 @@ describe('CatalogComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CatalogComponent]
+      imports: [FormsModule, HttpClientTestingModule],
+      declarations: [CatalogComponent],
+      schemas: [NO_ERRORS_SCHEMA],
     });
     fixture = TestBed.createComponent(CatalogComponent);
     component = fixture.componentInstance;

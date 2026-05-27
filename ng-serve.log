@@ -1,0 +1,46 @@
+
+> angular-project@0.0.0 start
+> ng serve --host 127.0.0.1 --port 4200
+
+
+Initial Chunk Files   | Names         |  Raw Size
+vendor.js             | vendor        |   2.56 MB |
+polyfills.js          | polyfills     | 252.55 kB |
+styles.css, styles.js | styles        | 151.06 kB |
+main.js               | main          | 140.93 kB |
+runtime.js            | runtime       |   6.50 kB |
+
+| Initial Total |   3.10 MB
+
+Build at: 2026-05-17T19:46:01.456Z - Hash: 6f2380682014dcb3 - Time: 3390ms
+
+** Angular Live Development Server is listening on 127.0.0.1:4200, open your browser on http://127.0.0.1:4200/ **
+
+
+√ Compiled successfully.
+
+Initial Chunk Files | Names   |  Raw Size
+main.js             | main    | 140.13 kB |
+runtime.js          | runtime |   6.50 kB |
+
+3 unchanged chunks
+
+Build at: 2026-05-17T19:57:02.621Z - Hash: cdee36c974a54a08 - Time: 463ms
+
+√ Compiled successfully.
+
+Initial Chunk Files | Names   |  Raw Size
+main.js             | main    | 140.13 kB |
+runtime.js          | runtime |   6.50 kB |
+
+3 unchanged chunks
+
+Build at: 2026-05-17T19:57:11.220Z - Hash: 14b96640517aa33a - Time: 235ms
+
+√ Compiled successfully.
+
+5 unchanged chunks
+
+Build at: 2026-05-17T19:58:16.067Z - Hash: 14b96640517aa33a - Time: 248ms
+
+√ Compiled successfully.

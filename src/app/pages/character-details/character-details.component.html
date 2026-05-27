@@ -1,0 +1,35 @@
+<main class="app-shell">
+  <app-header></app-header>
+
+  <app-page-shell
+    eyebrow="Details"
+    [title]="persona?.name || 'Persona details'"
+    [description]="persona?.story || 'Loading persona information.'">
+    <section class="details-grid" *ngIf="persona">
+      <mat-card class="panel">
+        <h2>Story</h2>
+        <p>{{ persona.story }}</p>
+        <div class="meta-row">
+          <span>{{ persona.category }}</span>
+          <span>{{ persona.share }}</span>
+        </div>
+      </mat-card>
+
+      <mat-card class="panel">
+        <h2>Attributes</h2>
+        <div class="stat-row" *ngFor="let attribute of persona.attributes">
+          <span>{{ attribute.name }}</span>
+          <b>{{ attribute.level }}/100</b>
+          <i [style.width.%]="attribute.level"></i>
+        </div>
+      </mat-card>
+
+      <div class="details-actions">
+        <a mat-flat-button color="primary" [routerLink]="['/personas', persona.id, 'edit']">Edit Persona</a>
+        <a mat-stroked-button routerLink="/catalog">Back to Catalog</a>
+      </div>
+    </section>
+  </app-page-shell>
+
+  <app-footer></app-footer>
+</main>

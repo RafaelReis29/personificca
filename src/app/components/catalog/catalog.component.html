@@ -1,1 +1,62 @@
-<p>catalog works!</p>
+<section class="catalog-layout">
+  <aside class="filters" aria-label="Catalog filters">
+    <p>Categories</p>
+    <button
+      type="button"
+      [class.active]="selectedCategory === 0"
+      (click)="selectCategory(0)"
+    >
+      All
+    </button>
+    <button
+      *ngFor="let category of categories"
+      type="button"
+      [class.active]="category.id === selectedCategory"
+      (click)="selectCategory(category.id)"
+    >
+      {{ category.name }}
+    </button>
+
+    <div class="filter-card">
+      <span>Share options</span>
+      <div>
+        <small>Private</small>
+        <small>Link</small>
+        <small>Public</small>
+      </div>
+    </div>
+  </aside>
+
+  <div class="catalog-content">
+    <div class="catalog-toolbar">
+      <div>
+        <h1>Persona Catalog</h1>
+        <p>Browse the personas saved in the local API.</p>
+      </div>
+
+      <label>
+        <span>Search</span>
+        <input
+          type="search"
+          [(ngModel)]="searchTerm"
+          placeholder="Search personas..."
+        />
+      </label>
+    </div>
+
+    <p class="empty-state" *ngIf="loading">Loading personas...</p>
+    <p class="empty-state" *ngIf="!loading && !filteredPersonas.length">
+      No personas found.
+    </p>
+
+    <div class="persona-grid" *ngIf="!loading && filteredPersonas.length">
+      <app-card
+        *ngFor="let persona of filteredPersonas"
+        [persona]="persona"
+        [compact]="true"
+        (delete)="deletePersona($event)"
+      >
+      </app-card>
+    </div>
+  </div>
+</section>
