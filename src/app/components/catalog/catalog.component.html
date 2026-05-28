@@ -1,1 +1,49 @@
-<p>catalog works!</p>
+<section class="catalog">
+  <div class="catalog-head">
+    <div>
+      <h2>Catálogo</h2>
+      <p>Busque, filtre e organize suas personas.</p>
+    </div>
+
+    <a mat-flat-button color="primary" routerLink="/personas/new">Criar persona</a>
+  </div>
+
+  <div class="filters">
+    <mat-form-field appearance="outline">
+      <mat-label>Buscar por nome</mat-label>
+      <input matInput type="search" name="searchTerm" [(ngModel)]="searchTerm" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Categoria</mat-label>
+      <mat-select name="selectedCategory" [(ngModel)]="selectedCategory">
+        <mat-option [value]="0">Todas</mat-option>
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <p class="status" *ngIf="loading">Carregando personas...</p>
+  <p class="status" *ngIf="!loading && !filteredPersonas.length">Nenhuma persona encontrada.</p>
+
+  <div class="grid" *ngIf="!loading && filteredPersonas.length">
+    <mat-card *ngFor="let persona of filteredPersonas">
+      <mat-card-header>
+        <mat-card-title>{{ persona.name }}</mat-card-title>
+        <mat-card-subtitle>{{ persona.category }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>{{ persona.story }}</p>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <a mat-button color="primary" [routerLink]="['/personas', persona.id]">Detalhes</a>
+        <a mat-button color="primary" [routerLink]="['/personas', persona.id, 'edit']">Editar</a>
+        <button mat-button color="warn" type="button" (click)="deletePersona(persona.id)">Deletar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>

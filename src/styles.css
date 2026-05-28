@@ -1,1 +1,63 @@
-/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/pink-bluegrey.css";
+@import url("https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  font-family: Cardo, ui-sans-serif, "Segoe UI", sans-serif;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+mat-card {
+  background: #ffffff !important;
+  color: #111111 !important;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-mdc-text-field-wrapper {
+  background: #ffffff !important;
+}
+
+.mat-mdc-form-field label,
+.mat-mdc-form-field input,
+.mat-mdc-form-field textarea,
+.mat-mdc-select-value,
+.mat-mdc-select-arrow,
+.mat-mdc-floating-label,
+.mat-mdc-form-field-required-marker {
+  color: #111111 !important;
+}

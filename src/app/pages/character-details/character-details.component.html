@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<main class="content">
+  <section class="details" *ngIf="persona">
+    <div class="title">
+      <h1>{{ persona.name }}</h1>
+      <p>{{ persona.category }}</p>
+    </div>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>História</mat-card-title>
+        <mat-card-subtitle>{{ shareLabel(persona.share) }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ persona.story }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Atributos</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="attributes">
+        <div class="attribute" *ngFor="let attribute of persona.attributes">
+          <span>{{ attribute.name }}</span>
+          <strong>{{ attribute.level }}</strong>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <div class="actions">
+      <a mat-flat-button color="primary" [routerLink]="['/personas', persona.id, 'edit']">Editar</a>
+      <a mat-stroked-button routerLink="/catalog">Voltar</a>
+    </div>
+  </section>
+
+  <p class="status" *ngIf="notFound">Persona não encontrada.</p>
+</main>
+
+<app-footer></app-footer>

@@ -1,0 +1,62 @@
+<app-header></app-header>
+
+<main class="content">
+  <form class="form" #personaForm="ngForm" (ngSubmit)="savePersona()">
+    <div class="title">
+      <h1>{{ pageTitle }}</h1>
+      <p>Defina nome, categoria, história e atributos da persona.</p>
+    </div>
+
+    <mat-card>
+      <mat-card-content class="fields">
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput type="text" required name="name" [(ngModel)]="persona.name" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Categoria</mat-label>
+          <mat-select required name="category" [(ngModel)]="persona.category_id">
+            <mat-option *ngFor="let category of categories" [value]="category.id">
+              {{ category.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Compartilhamento</mat-label>
+          <mat-select required name="share" [(ngModel)]="persona.share">
+            <mat-option *ngFor="let option of shareOptions" [value]="option.value">
+              {{ option.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>História</mat-label>
+          <textarea matInput required rows="7" name="story" [(ngModel)]="persona.story"></textarea>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Atributos</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content class="attributes">
+        <mat-form-field appearance="outline" *ngFor="let attribute of attributes">
+          <mat-label>{{ attribute.name }}</mat-label>
+          <input matInput type="number" min="0" max="100" [name]="'attribute-' + attribute.id" [(ngModel)]="attribute.level" />
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <div class="actions">
+      <button mat-flat-button color="primary" type="submit" [disabled]="personaForm.invalid">Salvar</button>
+      <a mat-stroked-button routerLink="/catalog">Cancelar</a>
+    </div>
+  </form>
+</main>
+
+<app-footer></app-footer>

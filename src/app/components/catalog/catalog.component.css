@@ -1,0 +1,60 @@
+.catalog {
+  display: grid;
+  gap: 24px;
+}
+
+.catalog-head,
+.filters {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+h2,
+p {
+  margin: 0;
+}
+
+.filters mat-form-field {
+  flex: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-content {
+  flex: 1;
+}
+
+mat-card-content p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.status {
+  padding: 24px 0;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .catalog-head,
+  .filters {
+    flex-direction: column;
+  }
+
+  .catalog-head a,
+  .filters mat-form-field {
+    width: 100%;
+  }
+}

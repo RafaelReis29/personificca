@@ -1,0 +1,30 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px clamp(16px, 5vw, 56px);
+  border-top: 2px solid #cacaca;
+}
+
+.footer span {
+  font-weight: 600;
+  font-size: 20px;
+  font-family: Cardo, ui-sans-serif, "Segoe UI", sans-serif;
+}
+
+nav {
+  display: flex;
+  gap: 16px;
+}
+
+nav a {
+  color: inherit;
+  font-weight: 600;
+  font-family: Cardo, ui-sans-serif, "Segoe UI", sans-serif;
+}
+
+@media (max-width: 640px) {
+  .footer {
+    flex-direction: column;
+  }
+}
