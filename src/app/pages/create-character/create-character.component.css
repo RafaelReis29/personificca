@@ -19,6 +19,12 @@
   gap: 8px;
 }
 
+mat-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+
 .fields,
 .attributes {
   display: grid;
