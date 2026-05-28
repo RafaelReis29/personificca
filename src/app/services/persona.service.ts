@@ -7,7 +7,7 @@ import { Attribute, Category, Persona, PersonaPayload } from '../models/persona'
   providedIn: 'root'
 })
 export class PersonaService {
-  private apiUrl = 'http://localhost:9000';
+  private apiUrl = 'https://personificca-api.onrender.com';
 
   constructor(private http: HttpClient) {}
 
