@@ -1,13 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Attribute, Category, Persona, PersonaPayload } from '../models/persona';
+import {
+  Attribute,
+  Category,
+  Persona,
+  PersonaPayload,
+} from '../models/persona';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PersonaService {
-  private apiUrl = 'http://localhost:9000';
+  private apiUrl = 'https://personificca-api.onrender.com';
 
   constructor(private http: HttpClient) {}
 
@@ -28,14 +33,26 @@ export class PersonaService {
   }
 
   createPersona(persona: PersonaPayload): Observable<{ message: string }> {
-    return this.http.post<{ message: string }>(`${this.apiUrl}/create.php`, persona);
+    return this.http.post<{ message: string }>(
+      `${this.apiUrl}/create.php`,
+      persona,
+    );
   }
 
-  updatePersona(id: number, persona: PersonaPayload): Observable<{ message: string }> {
-    return this.http.post<{ message: string }>(`${this.apiUrl}/update.php?id=${id}`, persona);
+  updatePersona(
+    id: number,
+    persona: PersonaPayload,
+  ): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>(
+      `${this.apiUrl}/update.php?id=${id}`,
+      persona,
+    );
   }
 
   deletePersona(id: number): Observable<{ message: string }> {
-    return this.http.post<{ message: string }>(`${this.apiUrl}/delete.php?id=${id}`, {});
+    return this.http.post<{ message: string }>(
+      `${this.apiUrl}/delete.php?id=${id}`,
+      {},
+    );
   }
 }
