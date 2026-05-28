@@ -1,88 +1,42 @@
-.creator-form {
-  display: grid;
-  width: min(780px, 100%);
-  max-width: 780px;
-  margin: 0 auto;
-  gap: 18px;
+.content {
+  padding: 32px clamp(16px, 6vw, 72px);
 }
 
-.panel {
+.form {
+  display: grid;
+  max-width: 920px;
+  gap: 20px;
+  margin: 0 auto;
+}
+
+.title h1,
+.title p {
+  margin: 0;
+}
+
+.title {
+  display: grid;
+  gap: 8px;
+}
+
+.fields,
+.attributes {
   display: grid;
   gap: 16px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-2);
-  color: var(--text-muted);
-  padding: 22px;
 }
 
-h2 {
-  margin: 0;
-  color: var(--text-strong);
+.attributes {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
-mat-label,
-mat-select,
-input,
-textarea {
-  color: #ffffff;
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: var(--text-soft);
-}
-
-:host ::ng-deep .mat-mdc-form-field .mdc-notched-outline__leading,
-:host ::ng-deep .mat-mdc-form-field .mdc-notched-outline__notch,
-:host ::ng-deep .mat-mdc-form-field .mdc-notched-outline__trailing {
-  border-color: #ffffff;
-}
-
-:host ::ng-deep .mat-mdc-form-field:hover .mdc-notched-outline__leading,
-:host ::ng-deep .mat-mdc-form-field:hover .mdc-notched-outline__notch,
-:host ::ng-deep .mat-mdc-form-field:hover .mdc-notched-outline__trailing,
-:host ::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
-:host ::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
-:host ::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
-  border-color: #ffffff;
-}
-
-:host ::ng-deep .mat-mdc-select-arrow,
-:host ::ng-deep .mat-mdc-select-value,
-:host ::ng-deep .mdc-text-field__input {
-  color: #ffffff;
-}
-
-.range-row {
-  display: grid;
-  grid-template-columns: 150px minmax(0, 1fr) 42px;
-  align-items: center;
-  gap: 14px;
-}
-
-.range-row input {
-  accent-color: var(--primary);
-}
-
-.range-row b {
-  color: var(--text-strong);
-  text-align: right;
-}
-
-.form-actions {
+.actions {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 12px;
 }
 
-.form-actions a,
-.form-actions button {
-  color: #ffffff;
-}
-
-@media (max-width: 900px) {
-  .range-row {
-    grid-template-columns: 1fr;
+@media (max-width: 640px) {
+  .actions {
+    flex-direction: column;
   }
 }

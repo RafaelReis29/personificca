@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Category, Persona, PersonaPayload } from '../models/persona';
+import { Attribute, Category, Persona, PersonaPayload } from '../models/persona';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +15,16 @@ export class PersonaService {
     return this.http.get<Persona[]>(`${this.apiUrl}/index.php`);
   }
 
-  getPersona(id: number): Observable<Persona> {
-    return this.http.get<Persona>(`${this.apiUrl}/edit.php?id=${id}`);
+  getPersona(id: number): Observable<Persona | null> {
+    return this.http.get<Persona | null>(`${this.apiUrl}/edit.php?id=${id}`);
   }
 
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(`${this.apiUrl}/categories.php`);
+  }
+
+  getAttributes(): Observable<Attribute[]> {
+    return this.http.get<Attribute[]>(`${this.apiUrl}/attributes.php`);
   }
 
   createPersona(persona: PersonaPayload): Observable<{ message: string }> {

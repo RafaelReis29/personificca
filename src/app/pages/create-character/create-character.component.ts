@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CATEGORIES } from '../../data/fallback-personas';
-import { Category, PersonaAttribute, PersonaPayload } from '../../models/persona';
+import { Attribute, Category, PersonaAttribute, PersonaPayload } from '../../models/persona';
 import { PersonaService } from '../../services/persona.service';
 
 @Component({
@@ -10,20 +9,17 @@ import { PersonaService } from '../../services/persona.service';
   styleUrls: ['./create-character.component.css']
 })
 export class CreateCharacterComponent {
-  categories: Category[] = CATEGORIES;
-  shareOptions = ['private', 'only with link', 'public'];
-  attributes: PersonaAttribute[] = [
-    { id: 1, name: 'Intelligence', level: 50 },
-    { id: 2, name: 'Strength', level: 50 },
-    { id: 3, name: 'Dexterity', level: 50 },
-    { id: 4, name: 'Constitution', level: 50 },
-    { id: 5, name: 'Wisdom', level: 50 },
-    { id: 6, name: 'Charisma', level: 50 }
+  categories: Category[] = [];
+  shareOptions = [
+    { value: 'private', label: 'Privada' },
+    { value: 'only_with_link', label: 'Apenas com link' },
+    { value: 'public', label: 'Pública' }
   ];
+  attributes: PersonaAttribute[] = [];
   personaId = 0;
   persona = {
     name: '',
-    category_id: 1,
+    category_id: 0,
     story: '',
     share: 'private'
   };
@@ -35,11 +31,17 @@ export class CreateCharacterComponent {
   ) {
     this.personaId = Number(this.route.snapshot.paramMap.get('id'));
     this.loadCategories();
-    this.loadPersona();
+
+    if (this.personaId) {
+      this.loadPersona();
+      return;
+    }
+
+    this.loadAttributes();
   }
 
   get pageTitle(): string {
-    return this.personaId ? 'Edit Persona' : 'Create Persona';
+    return this.personaId ? 'Editar persona' : 'Criar persona';
   }
 
   savePersona(): void {
@@ -63,15 +65,19 @@ export class CreateCharacterComponent {
   private loadCategories(): void {
     this.personaService.getCategories().subscribe((categories) => {
       this.categories = categories;
+      if (!this.persona.category_id && categories.length) {
+        this.persona.category_id = categories[0].id;
+      }
     });
   }
 
   private loadPersona(): void {
-    if (!this.personaId) {
-      return;
-    }
-
     this.personaService.getPersona(this.personaId).subscribe((persona) => {
+      if (!persona) {
+        this.router.navigate(['/catalog']);
+        return;
+      }
+
       this.persona = {
         name: persona.name,
         category_id: persona.category_id,
@@ -80,5 +86,19 @@ export class CreateCharacterComponent {
       };
       this.attributes = persona.attributes;
     });
+  }
+
+  private loadAttributes(): void {
+    this.personaService.getAttributes().subscribe((attributes) => {
+      this.attributes = this.buildAttributes(attributes);
+    });
+  }
+
+  private buildAttributes(attributes: Attribute[]): PersonaAttribute[] {
+    return attributes.map((attribute) => ({
+      id: attribute.id,
+      name: attribute.name,
+      level: 50
+    }));
   }
 }

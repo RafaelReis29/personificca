@@ -1,35 +1,41 @@
-<main class="app-shell">
-  <app-header></app-header>
+<app-header></app-header>
 
-  <app-page-shell
-    eyebrow="Details"
-    [title]="persona?.name || 'Persona details'"
-    [description]="persona?.story || 'Loading persona information.'">
-    <section class="details-grid" *ngIf="persona">
-      <mat-card class="panel">
-        <h2>Story</h2>
+<main class="content">
+  <section class="details" *ngIf="persona">
+    <div class="title">
+      <h1>{{ persona.name }}</h1>
+      <p>{{ persona.category }}</p>
+    </div>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>História</mat-card-title>
+        <mat-card-subtitle>{{ shareLabel(persona.share) }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
         <p>{{ persona.story }}</p>
-        <div class="meta-row">
-          <span>{{ persona.category }}</span>
-          <span>{{ persona.share }}</span>
-        </div>
-      </mat-card>
+      </mat-card-content>
+    </mat-card>
 
-      <mat-card class="panel">
-        <h2>Attributes</h2>
-        <div class="stat-row" *ngFor="let attribute of persona.attributes">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Atributos</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="attributes">
+        <div class="attribute" *ngFor="let attribute of persona.attributes">
           <span>{{ attribute.name }}</span>
-          <b>{{ attribute.level }}/100</b>
-          <i [style.width.%]="attribute.level"></i>
+          <strong>{{ attribute.level }}</strong>
         </div>
-      </mat-card>
+      </mat-card-content>
+    </mat-card>
 
-      <div class="details-actions">
-        <a mat-flat-button color="primary" [routerLink]="['/personas', persona.id, 'edit']">Edit Persona</a>
-        <a mat-stroked-button routerLink="/catalog">Back to Catalog</a>
-      </div>
-    </section>
-  </app-page-shell>
+    <div class="actions">
+      <a mat-flat-button color="primary" [routerLink]="['/personas', persona.id, 'edit']">Editar</a>
+      <a mat-stroked-button routerLink="/catalog">Voltar</a>
+    </div>
+  </section>
 
-  <app-footer></app-footer>
+  <p class="status" *ngIf="notFound">Persona não encontrada.</p>
 </main>
+
+<app-footer></app-footer>

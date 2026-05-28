@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
-import { CATEGORIES, FALLBACK_PERSONAS } from '../../data/fallback-personas';
 import { Category, Persona } from '../../models/persona';
 import { PersonaService } from '../../services/persona.service';
 
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.css'],
+  styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent {
   personas: Persona[] = [];
-  categories: Category[] = CATEGORIES;
+  categories: Category[] = [];
   selectedCategory = 0;
   searchTerm = '';
   loading = true;
@@ -25,21 +24,13 @@ export class CatalogComponent {
   }
 
   get filteredPersonas(): Persona[] {
+    const search = this.searchTerm.trim().toLowerCase();
+
     return this.personas.filter((persona) => {
-      const matchesCategory =
-        !this.selectedCategory || persona.category_id === this.selectedCategory;
-      const search = this.searchTerm.trim().toLowerCase();
-      const matchesSearch =
-        !search ||
-        `${persona.name} ${persona.story} ${persona.category}`
-          .toLowerCase()
-          .includes(search);
+      const matchesCategory = !this.selectedCategory || persona.category_id === this.selectedCategory;
+      const matchesSearch = !search || persona.name.toLowerCase().includes(search);
       return matchesCategory && matchesSearch;
     });
-  }
-
-  selectCategory(category: number): void {
-    this.selectedCategory = category;
   }
 
   deletePersona(id: number): void {
@@ -49,15 +40,9 @@ export class CatalogComponent {
   }
 
   private loadPersonas(): void {
-    this.personaService.getPersonas().subscribe({
-      next: (personas) => {
-        this.personas = personas;
-        this.loading = false;
-      },
-      error: () => {
-        this.personas = FALLBACK_PERSONAS;
-        this.loading = false;
-      },
+    this.personaService.getPersonas().subscribe((personas) => {
+      this.personas = personas;
+      this.loading = false;
     });
   }
 }

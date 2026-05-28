@@ -6,9 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'Catalog', path: '/catalog' },
-    { label: 'Create', path: '/personas/new' },
-  ];
 }

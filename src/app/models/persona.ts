@@ -6,10 +6,11 @@ export interface PersonaAttribute {
 
 export interface Persona {
   id: number;
+  user_id?: number | null;
   name: string;
   story: string;
   category_id: number;
-  category: string;
+  category: string | null;
   share: string;
   attributes: PersonaAttribute[];
 }
@@ -23,6 +24,11 @@ export interface PersonaPayload {
 }
 
 export interface Category {
+  id: number;
+  name: string;
+}
+
+export interface Attribute {
   id: number;
   name: string;
 }
