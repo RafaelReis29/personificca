@@ -1,38 +1,34 @@
-# Personificca - An angular application
+# Personificca - An Angular Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+Personificca is YOUR app to create *personas!* (quite intuitive hah)
+
+Let your imagination flow while you create characters with their own story and attributes. Use it to make prototypes for your next RPG campaign or your next story as a writer.
+
+<img width="1449" height="611" alt="Personificca-home-page" src="https://github.com/user-attachments/assets/4ff10e29-6879-47fc-8dee-c27bade886f9" />
 
 ---
 
-## Requirements
+## Features
 
-- material design
-- 3 links/âncoras
-- componentes
-- CRUD
-- rotas
-- visualmente agradável
+- Catalog of personas with filters (search bar and category select)
+- Configurable personas with story, sharing configs and 10 RPG-like attributes
+- Dynamic forms to create and edit a persona
+- Routing system to access different components
+- Standardized persona service with full CRUD operations for each persona stored in the postgres database
+- Model layer with interfaces for persona, payload and more
+- Externally Hosted API, being a middleware between the app and the database
+- Material design with predefined theme
 
-## Development server
+## Tech Stack 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+- Angular material design version 16.2.14
+- Node version 18.10.0
 
-## Code scaffolding
+## Footnotes
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+🚧 Personificca is currently under development with its first version. The API service its not online, so local testing of the database connection and CRUD operations isn't recommended.
 
-## Build
+New features are planned to the future, as part of an expansion initiative towards experimental uses of the idea.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+If you are a creative mind, a nerd wanderer or just a curious person, feel free to reach out with Rafael to share ideas and discuss possibilities (it will be a pleasure).
