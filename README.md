@@ -24,6 +24,9 @@ Let your imagination flow while you create characters with their own story and a
 - [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
 - Angular material design version 16.2.14
 - Node version 18.10.0
+- PHP API - [github repo](https://github.com/RafaelReis29/personificca-api)
+- Postgres database hosted with [Neon](https://neon.com)
+- Docker (to build the environments to properly host the app & the API)
 
 ## Footnotes
 
